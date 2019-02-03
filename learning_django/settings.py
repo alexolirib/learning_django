@@ -28,9 +28,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
+# python manage.py migrate - cria as tabelas de acordo com essas configurações
+#python manage.py makemigrations polls - quando for adicionado novos modelos
+#python manage.py sqlmigrate polls 0001 - para saber o que irá rodar no banco
+#para ser realizado - python manage.py migrate
+#python manage.py migrate - pega as migrações que não foram aplicadas
 INSTALLED_APPS = [
+    #para ser criado o modelo do polls, é preciso
+    #referenciar arquivo de configuração
+    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
