@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list  %}
+        <li>
+            <!--<a href="{{question.id}}/">{{question.question_text}}</a>-->
+            <!--polls_detail - isso é definido no arquivo urls-->
+            <!--polls:polls_detail - 'polls:...' é o app_name na urls é feito para diferenciar dos outros apps-->
+            <a href="{% url 'polls:polls_detail' question.id %}">{{ question.question_text}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No polls are available</p>
+    {% endif %}
+
+</body>
+</html>

@@ -54,14 +54,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+#config
 ROOT_URLCONF = 'learning_django.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        'APP_DIRS': True,
+        'APP_DIRS': True, #por conta disso como padrão procura pastas templates nos apps
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
