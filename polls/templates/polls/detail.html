@@ -8,11 +8,26 @@
     <h1>
         {{ question }}
     </h1>
-    <ul>
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <form action="{% url 'polls:polls_vote' question.id %}" method="post">
+        <!--trás uma segurança maior no form-->
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+            <!--como todo radio tem o mesmo nome , quando for enviado a opção escolhida irá vir com # e o nome-->
+            <!--forloop.counter indica quantas vezes a tag for passou pelo o laço-->
+            <input type="radio" name="choice" id="choice{{ forloop.counter}}" value="{{choice.id}}">
+            <label for="choice{{ forloop.counter}}" >{{choice}}</label>
+        <br>
+        {%endfor%}
+        <input type="submit" value="Vote">
+    </form>
+    <!--<ul>
         {% for choice in question.choice_set.all %}
             <li>{{ choice.choice_text }}</li>
         {% endfor %}
     </ul>
-
+-->
 </body>
 </html>
